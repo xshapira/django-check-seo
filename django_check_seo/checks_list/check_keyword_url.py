@@ -113,7 +113,7 @@ def run(site):
             enough_keyword.found += keyword
             accented_occurrences = 0
 
-    if not any(i > 0 for i in occurrence):
+    if all(i <= 0 for i in occurrence):
         no_keyword.searched_in = [full_url]
         site.problems.append(no_keyword)
     else:

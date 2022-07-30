@@ -43,10 +43,7 @@ class init:
 
 
 def get_content_text(soup):
-    content_text = ""
-    for c in soup:
-        content_text += c.get_text(separator=" ")
-
+    content_text = "".join(c.get_text(separator=" ") for c in soup)
     # strip multiple carriage return (with optional space) to only one
     content_text = re.sub(r"(\n( ?))+", "\n", content_text)
     # strip multiples spaces (>3) to only 2 (for title readability)

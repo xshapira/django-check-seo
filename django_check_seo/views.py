@@ -20,11 +20,7 @@ class IndexView(generic.base.TemplateView):
             *args, **kwargs
         )
 
-        if settings.DJANGO_CHECK_SEO_FORCE_HTTP:
-            protocol = "http://"
-        else:
-            protocol = "https://"
-
+        protocol = "http://" if settings.DJANGO_CHECK_SEO_FORCE_HTTP else "https://"
         # get content of the page
         if "http" not in self.request.GET.get(
             "page", None

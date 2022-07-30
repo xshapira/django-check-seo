@@ -43,8 +43,6 @@ def run(site):
     first_words_text = first_words.lower()
 
     occurrence = []
-    first_words_kw = []
-
     for keyword in site.keywords:
         keyword = keyword.lower()
         nb_occurrences = len(
@@ -62,12 +60,11 @@ def run(site):
             if no_keywords.found != "":
                 no_keywords.found += ", "
             no_keywords.found += keyword
-    first_words_kw.append(first_words_text)
-
+    first_words_kw = [first_words_text]
     no_keywords.searched_in = first_words_kw
 
     # no keyword was found in first paragraph
-    if not any(i > 0 for i in occurrence):
+    if all(i <= 0 for i in occurrence):
         no_keywords.found = pgettext("masculin", "none")
         site.problems.append(no_keywords)
 

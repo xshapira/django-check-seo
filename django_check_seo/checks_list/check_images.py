@@ -84,8 +84,7 @@ def run(site):
         lack_alt.found = problem
         lack_alt.searched_in = imgs
         site.problems.append(lack_alt)
-    else:
-        if len(images) > 0:
-            enough_alt.found = len(images)
-            enough_alt.searched_in = imgs
-            site.success.append(enough_alt)
+    elif len(images) > 0:
+        enough_alt.found = len(images)
+        enough_alt.searched_in = imgs
+        site.success.append(enough_alt)

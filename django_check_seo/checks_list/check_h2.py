@@ -103,7 +103,7 @@ def run(site):
 
             h2_kw.append(single_h2)
         # if no keyword is found in h2
-        if not any(i > 0 for i in occurrence):
+        if all(i <= 0 for i in occurrence):
             no_keywords.searched_in = [t.text for t in h2]
             no_keywords.found = pgettext("masculin", "none")
             site.warnings.append(no_keywords)

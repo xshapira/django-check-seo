@@ -142,8 +142,6 @@ def run(site):
     keyword.found = ""
     occurrence = []
     title_text = titles[0].text.lower()
-    title_text_kw = []
-
     for kw in site.keywords:
         kw = kw.lower()
         nb_occurrences = len(
@@ -161,8 +159,7 @@ def run(site):
             if keyword.found != "":
                 keyword.found += ", "
             keyword.found += kw
-    title_text_kw.append(title_text)
-
+    title_text_kw = [title_text]
     # title do not contain any keyword
     if keyword.found == "":
         no_keyword.searched_in = title_text_kw

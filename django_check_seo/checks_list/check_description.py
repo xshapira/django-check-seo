@@ -188,13 +188,12 @@ def run(site):
                     keywords_good.found += keyword
 
             # if no keyword is found in description
-            if not any(i > 0 for i in occurrence):
+            if all(i <= 0 for i in occurrence):
 
                 keywords_bad.found = 0
                 keywords_bad.searched_in = meta_description
                 site.warnings.append(keywords_bad)
 
-            # perfect
             else:
                 keywords_good.searched_in = meta_description_kw
                 site.success.append(keywords_good)

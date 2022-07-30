@@ -62,7 +62,7 @@ def test_url_okay():
                 == "Google recommand to organize your content by adding depth in your url, but advises against putting too much depth."
             )
 
-        if success.name == "URL length is great":
+        elif success.name == "URL length is great":
             assert success.name == "URL length is great"
             assert success.settings == "less than 70"
             assert success.found == 37

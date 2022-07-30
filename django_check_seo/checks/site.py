@@ -38,10 +38,7 @@ class Site:
                     node.extract()
 
         # get content without doublewords thx to custom separator ("<h1>Title</h1><br /><p>Content</p>" -> TitleContent)
-        self.content_text = ""
-        for c in self.content:
-            self.content_text += c.get_text(separator=" ")
-
+        self.content_text = "".join(c.get_text(separator=" ") for c in self.content)
         # strip multiple carriage return (with optional space) to only one
         self.content_text = re.sub(r"(\n( ?))+", "\n", self.content_text)
         # strip multiples spaces (>3) to only 2 (for title readability)

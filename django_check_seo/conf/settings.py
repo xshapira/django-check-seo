@@ -1,7 +1,6 @@
 # Third party
 from django.conf import settings
 
-# define basic SEO settings, see
 DJANGO_CHECK_SEO_SETTINGS = {
     "content_words_number": [300, 600],
     "internal_links": 1,
@@ -11,17 +10,9 @@ DJANGO_CHECK_SEO_SETTINGS = {
     "keywords_in_first_words": 50,
     "max_link_depth": 4,
     "max_url_length": 70,
-}
-# update settings redefined in projectname/settings.py
-DJANGO_CHECK_SEO_SETTINGS.update(getattr(settings, "DJANGO_CHECK_SEO_SETTINGS", {}))
+} | getattr(settings, "DJANGO_CHECK_SEO_SETTINGS", {})
 
-
-# define auth data (for .htaccess files)
-DJANGO_CHECK_SEO_AUTH = {}
-# update auth data with values from projectname/settings.py
-DJANGO_CHECK_SEO_AUTH.update(getattr(settings, "DJANGO_CHECK_SEO_AUTH", {}))
-
-
+DJANGO_CHECK_SEO_AUTH = {} | getattr(settings, "DJANGO_CHECK_SEO_AUTH", {})
 # see https://github.com/kapt-labs/django-check-seo/issues/43 for more informations
 DJANGO_CHECK_SEO_AUTH_FOLLOW_REDIRECTS = False
 # update redirect with authentication strategy with value from projectname/settings.py
